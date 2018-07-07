@@ -27,7 +27,9 @@ router.post('/',async (req,res)=>{
 router.put('/:id',async(req,res)=>{
     const {title,description}=req.body;
     const newTask={title,description};
-    await Task.findOneAndUpdate(req.params.id,newTask);
+    console.log('Recibido');
+    console.log(req.params.id);
+    await Task.findByIdAndUpdate(req.params.id,newTask);
     res.json({status:'Task Updated'});
 
 });
